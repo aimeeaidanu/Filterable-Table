@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Filterable Table</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container mt-3">
+  <h2>Filterable Table (SIMPSONS EDITION)</h2>
+  <p>Type something in the input field to search the table for first names, last names or emails:</p>  
+  <input class="form-control" id="myInput" type="text" placeholder="Search..">
+  <br>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody id="myTable">
+      <tr>
+        <td>Homer</td>
+        <td>Simpson</td>
+        <td>Homer@Simpson.com</td>
+      </tr>
+      <tr>
+        <td>Marge</td>
+        <td>Simpson</td>
+        <td>Marge@Simpson.com</td>
+      </tr>
+      <tr>
+        <td>Bart</td>
+        <td>Simpson</td>
+        <td>Bart@Simpson.com</td>
+      </tr>
+      <tr>
+        <td>Lisa</td>
+        <td>Simpson</td>
+        <td>Lisa@Simpson.com</td>
+      </tr>
+      <tr>
+      	<td>Maggie</td>
+        <td>Simpson</td>
+        <td>Maggie@Simpson.com</td>
+       </tr>
+    </tbody>
+  </table>
+  
+</div>
+
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+
+</body>
+</html>
